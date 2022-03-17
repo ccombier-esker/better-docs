@@ -397,14 +397,13 @@ function buildGroupNav (members, title) {
     nav += '<h2>' + title + '</h2>'
   }
   nav += buildMemberNav(members.tutorials || [], 'Tutorials', seenTutorials, linktoTutorial)
-  nav += buildMemberNav(members.modules || [], 'Modules', {}, linkto)
+  nav += buildMemberNav(members.modules || [], 'Components', {}, linkto)
   nav += buildMemberNav(members.externals || [], 'Externals', seen, linktoExternal)
   nav += buildMemberNav(members.namespaces || [], 'Namespaces', seen, linkto)
   nav += buildMemberNav(members.classes || [], 'Classes', seen, linkto)
   nav += buildMemberNav(members.interfaces || [], 'Interfaces', seen, linkto)
   nav += buildMemberNav(members.events || [], 'Events', seen, linkto)
   nav += buildMemberNav(members.mixins || [], 'Mixins', seen, linkto)
-  nav += buildMemberNav(members.components || [], 'Components', seen, linkto)
     
   if (members.globals && members.globals.length) {
     globalNav = ''
@@ -755,7 +754,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     var myComponents = helper.find(components, {longname: longname})
 
     if (myModules.length) {
-      generate(myModules[0].name, 'Module', myModules,  helper.longnameToUrl[longname])
+      generate(myModules[0].name, 'Component', myModules,  helper.longnameToUrl[longname])
     }
 
     if (myClasses.length) {
