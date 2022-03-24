@@ -396,8 +396,8 @@ function buildGroupNav (members, title) {
   if (title) {
     nav += '<h2>' + title + '</h2>'
   }
-  nav += buildMemberNav(members.tutorials || [], 'Tutorials', seenTutorials, linktoTutorial)
-  nav += buildMemberNav(members.modules || [], 'Components', {}, linkto)
+  nav += buildMemberNav(members.tutorials || [], 'Components', seenTutorials, linktoTutorial)
+  nav += buildMemberNav(members.modules || [], 'Technical Spec', {}, linkto)
   nav += buildMemberNav(members.externals || [], 'Externals', seen, linktoExternal)
   nav += buildMemberNav(members.namespaces || [], 'Namespaces', seen, linkto)
   nav += buildMemberNav(members.classes || [], 'Classes', seen, linkto)
@@ -450,7 +450,7 @@ function buildNav(members, navTypes = null, betterDocs) {
   var rootScope = {}
 
   var types = navTypes || ['modules', 'externals', 'namespaces', 'classes',
-    'components', 'interfaces', 'events', 'mixins', 'globals']
+    'components', 'interfaces', 'events', 'mixins', 'globals', 'tutorials']
   types.forEach(function(type) {
     if (!members[type]) { return }
     members[type].forEach(function(element) {
@@ -754,7 +754,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     var myComponents = helper.find(components, {longname: longname})
 
     if (myModules.length) {
-      generate(myModules[0].name, 'Component', myModules,  helper.longnameToUrl[longname])
+      generate(myModules[0].name, 'Technical Documentation', myModules,  helper.longnameToUrl[longname])
     }
 
     if (myClasses.length) {
