@@ -1,7 +1,38 @@
 <section>
 
+<script>
+function copyCommandLine() {
+  /* Get the text field */
+  var copyText = document.getElementById("CommandLine");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+  showSnackbar();
+}
+
+function showSnackbar() {
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+</script>
+
+<div id="snackbar">Command line copied in clipboard ...</div>
+
 <article>
+    <h3> Getting started </h3>
+    <pre>
+        <input type="text" class="cmdline" value="git submodule add git@bitbucket.org:eskerww/<?js= header ?>.git .\SharedComponents\<?js= header ?>" id="CommandLine"> <button onclick="copyCommandLine()">Copy Command Line</button>
+    </pre>
     <?js= content ?>
 </article>
-
 </section>

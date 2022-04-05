@@ -786,6 +786,7 @@ exports.publish = function(taffyData, opts, tutorials) {
       title: title,
       subtitle: subtitle,
       header: tutorial.title,
+      reponame: filename,
       content: tutorial.parse(),
       children: tutorial.children
     }
@@ -801,7 +802,7 @@ exports.publish = function(taffyData, opts, tutorials) {
   // tutorials can have only one parent so there is no risk for loops
   function saveChildren(node) {
     node.children.forEach(function(child) {
-      generateTutorial(child.title, 'Tutorial', child, helper.tutorialToUrl(child.name))
+      generateTutorial(child.title, 'Component', child, helper.tutorialToUrl(child.name))
       saveChildren(child)
     })
   }
